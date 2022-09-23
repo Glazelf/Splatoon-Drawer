@@ -29,7 +29,6 @@ async function splatoonDrawer() {
     console.log("Detached controller from console.");
     // Reconnect
     conn.write("click A \r\n");
-
     console.log("Connected controller to console.");
     await sleep(1000);
     conn.write("click A \r\n");
