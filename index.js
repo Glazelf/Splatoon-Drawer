@@ -6,14 +6,11 @@ async function splatoonDrawer() {
     const port = config.port;
     const host = config.ip; // change to switch's IP
     const input = config.fileName;
-    const layout = config.layout; // 0 = horizontal | 1 = vertical
     let drawingWidth = 320;
     let drawingHeight = 120;
     let blackTreshold = config.blackTreshold;
-    if (layout == 1) {
-        drawingWidth = 120;
-        drawingHeight = 320;
-    };
+
+    // check width and height
 
     let img = await Canvas.loadImage(`./${input}`).catch(err => {
         return console.log(err);
