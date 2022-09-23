@@ -27,39 +27,40 @@ async function splatoonDrawer() {
 
     conn.write("detachController \r\n"); // detach from console
     console.log("Detached controller from console.");
-    await sleep(5000);
     // Reconnect
     conn.write("click A \r\n");
-    conn.write("click A \r\n");
+
     console.log("Connected controller to console.");
+    await sleep(1000);
+    conn.write("click A \r\n");
 
     let pixelData;
     let x = 0;
     let y = 0;
-    pixelData = ctx.getImageData(0, 0, 1, 1).data;
-    draw(conn, pixelData, blackTreshold);
-    for (y = 0; y < drawingHeight; y++) {
-        if (x > 0) {
-            for (i = 0; i < drawingWidth; i++) {
-                conn.write("click DLEFT \r\n");
-            };
-            conn.write("click DDOWN \r\n");
-        };
-        for (x = 0; x < drawingWidth; x++) {
-            pixelData = ctx.getImageData(x, y, 1, 1).data;
-            draw(conn, pixelData, blackTreshold);
-            conn.write("click DRIGHT \r\n");
-            x++
-        };
-        y++
-    };
+    console.log("Starting y0 x0");
+    pixelData = ctx.getImageData(0, 0, drawingWidth, drawingHeight).data;
+    console.log(pixelData)
+    return;
+    // draw(conn, pixelData, blackTreshold);
+    // await for (y = 0; y < drawingHeight; y++) {
+    //     if (x > 0) {
+    //         console.log("Resetting cursor to x0 and moving down.");
+    //         await for (i = 0; i < drawingWidth; i++) {
+    //             conn.write("click DLEFT \r\n");
+    //         };
+    //         conn.write("click DDOWN \r\n");
+    //         console.log(`Starting y${y} x${x}`);
+    //     };
+    //     await for (x = 0; x < drawingWidth; x++) {
+    //         pixelData = ctx.getImageData(x, y, 1, 1).data;
+    //         draw(conn, pixelData, blackTreshold);
+    //         conn.write("click DRIGHT \r\n");
+    //     };
+    // };
 };
 splatoonDrawer();
 
 function draw(conn, pixelData, blackTreshold) {
-    if (pixelData[0] + pixelData[1] + pixelData[2] > blackTreshold) {
-        conn.write("click B \r\n");
-    } else {
-        conn.write("click A \r\n");
-    };
+    if (pixelData[0] + pixelData[1] + pixelData[2] > blackTreshold) conn.write("click A \r\n");
+    return;
 };
