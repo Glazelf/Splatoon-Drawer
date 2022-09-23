@@ -1,6 +1,7 @@
 {
     "ip": "192.168.0.0",
     "port": "6000",
-    "filename": "input.png",
-    "layout": 0
+    "fileName": "input.png",
+    "layout": 0,
+    "blackTreshold": "383"
 }
