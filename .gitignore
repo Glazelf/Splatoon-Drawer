@@ -1,0 +1,17 @@
+/node_modules
+/.idea
+/.vs
+config.json
+README.md
+*.log
+npm-debug.log*
+pids
+*.pid
+*.seed
+build/Release
+jspm_packages
+.npm
+.node_repl_history
+init
+.channels
+*.bak
