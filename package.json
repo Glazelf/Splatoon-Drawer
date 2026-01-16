@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Glazelf/Splatoon-Drawer#readme",
   "dependencies": {
-    "canvas": "^2.10.1"
+    "canvas": "^3.2.1"
   }
 }
